@@ -9,16 +9,16 @@
 
           <%= fields_for( :tenant ) do |w| %>
           <div class="field">
-          <%= w.label :surname, '*Organization', class: "organization"%>
+          <%= w.label :name, '*Organization', class: "organization"%>
           <%= w.text_field :name, required: true, class: "input", autofocus: true %>
           <span class='description'> If you want to participate in more than one project this is mandatory</span>
           </div>
           <% end %>
           <div class="field">
-			<div class="control">
-			 <%= f.input :name, required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-			</div>
-		  </div>
+			      <div class="control">
+			       <%= f.input :name, required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+			      </div>
+		      </div>
 
 
           <div class="field">

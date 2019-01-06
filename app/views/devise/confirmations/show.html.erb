@@ -1,8 +1,21 @@
 <section class="section">
   <div class="columns is-centered">
     <div class="column is-4">
+      <% if @user.errors.any? %>
+        <div id="error_expl" class="message is-danger">
+          <div class="message-header">
+            <h3><%= pluralize(@user.errors.count, "error") %> prohibited this password from being saved:</h3>
+          </div>
+          <div class="message-body">
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+     <% end %>
       <%= form_for resource, :as => resource_name, :url => update_user_confirmation_path, :html => {:method => 'put'}, :id => 'activation-form' do |f| %>
-        <%= devise_error_messages! %>
           <h4 class="subtitle is-3">Account Activation<% if resource.try(:user_name) %> for <%= resource.user_name %><% end %></h4>
           <% if @requires_password %>
             <div class="field">
@@ -21,7 +34,7 @@
               <%= hidden_field_tag :confirmation_token,@confirmation_token %>
                 <div class="field">
                   <div class="control">
-                    <%= f.submit "Activate", class:'button is-link' %>
+                    <%= f.submit "Activate", class:'button is-primary is-medium' %>
                   </div>
                 </div>
       <% end %>
