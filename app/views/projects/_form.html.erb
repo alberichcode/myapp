@@ -1,0 +1,27 @@
+<%= form_for [@tenant, @project], :html => { :class => "form-horizontal project" } do |f| %>
+
+  <%= render 'shared/errors', obj: @project%>
+
+  <div class="field">
+    <%= f.label :title, :class => 'label organization'  %>
+    <%= f.text_field :title, :class => 'input', autofocus: true %>
+
+  </div>
+  <div class="field">
+    <%= f.label :description, :class => 'label organization' %>
+    <div class="control">
+      <%= f.text_field :description, :class => 'textarea' %>
+    </div>
+
+
+  </div>
+  <div class="field">
+    <%= f.label :expected_completion_date, :class => 'label organization' %>
+    <%= f.text_field :expected_completion_date, :class => 'input datepicker' %>
+
+  </div>
+  <br />
+  <%= f.hidden_field :tenant_id, value: params[:tenant_id], :class => 'input' %>
+  <%= f.submit nil, :class => 'button is-primary is-medium' %>
+
+<% end %>
