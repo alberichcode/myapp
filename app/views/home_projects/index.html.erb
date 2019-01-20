@@ -1,5 +1,4 @@
-
-
+<% if current_user%>
 <h1>Projects</h1>
 
 <table>
@@ -37,5 +36,8 @@
 </table>
 
 <br>
-
-<%= link_to 'New Project', new_tenant_project_path %>
+<%= link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id),
+           :class => 'btn btn-primary' %>
+<% else %>
+Welcome to MusicHub
+<% end %>
