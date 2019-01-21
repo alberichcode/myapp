@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   end
   resources :members
   get 'home_projects/index'
+  get 'home/index'
 
-  root :to => "home_projects#index"
+  root :to => "home#index"
 
   # *MUST* come *BEFORE* devise's definitions (below)
   as :user do

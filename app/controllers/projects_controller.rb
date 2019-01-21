@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.by_user_plan_and_tenant(params[:tenant_id], current_user)
 
   end
 
@@ -90,7 +90,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title, :description, :expected_completion_date, :tenant_id)
+      params.require(:project).permit(:title, :description, :tenant_id)
     end
     def set_tenant
       @tenant = Tenant.find(params[:tenant_id])

@@ -8,5 +8,5 @@ class User < ApplicationRecord
 
   has_one :member, :dependent => :destroy
   has_many :user_projects
-  has_many :projects, through: :user_projects, dependent: :destroy
+  has_many :projects, through: :user_projects,:dependent => :delete_all
 end

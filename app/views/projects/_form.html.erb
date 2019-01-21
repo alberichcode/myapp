@@ -15,11 +15,6 @@
 
 
   </div>
-  <div class="field">
-    <%= f.label :expected_completion_date, :class => 'label organization' %>
-    <%= f.text_field :expected_completion_date, :class => 'input datepicker' %>
-
-  </div>
   <br />
   <%= f.hidden_field :tenant_id, value: params[:tenant_id], :class => 'input' %>
   <%= f.submit nil, :class => 'button is-primary is-medium' %>
