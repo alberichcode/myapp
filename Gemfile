@@ -26,11 +26,21 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 
-gem 'devise'
+
 gem 'milia'
-gem 'simple_form'
 gem 'bulma-rails'
-gem 'bootstrap-datepicker-rails'
+gem 'devise'
+gem 'carrierwave'
+gem 'simple_form'
+gem 'mini_magick'
+gem 'impressionist'
+gem 'jquery-rails'
+gem 'gravatar_image_tag'
+gem 'acts_as_votable'
+gem "wysiwyg-rails"
+gem "font-awesome-sass"
+gem 'public_activity'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

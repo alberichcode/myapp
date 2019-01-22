@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :categories
+  resources :shots do
+    resources :comments
+    member do
+      put 'like', to: 'shots#like'
+      put 'unlike', to: 'shots#unlike'
+    end
+  end
   resources :user_projects
   resources :tenants do
     resources :projects do

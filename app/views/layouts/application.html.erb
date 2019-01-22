@@ -45,7 +45,7 @@
           <%= link_to 'News', "#" , class:"navbar-item" %>
           <%= link_to 'Forum', "#" , class:"navbar-item" %>
           <%= link_to 'Jobs', "#" , class:"navbar-item" %>
-          
+          <%= link_to 'Projects', home_projects_index_path, class: "navbar-item"%>
 
 
         </div>
@@ -53,21 +53,25 @@
         <div class="navbar-end">
               <% if user_signed_in? %>
               <p class="control new-shot">
-                <%= link_to "#", class:"button is-primary"  do %>
+                <%= link_to new_shot_path, class:"button is-primary"  do %>
                   <span class="icon is-small"><i class="fa fa-upload"></i></span>
                   <span>New Shot</span>
                 <% end %>
               </p>
 
               <div class="navbar-item has-dropdown is-hoverable account">
-                <a class="navbar-link user-thumb">
-                  <h1>My account</h1>
+                <% if !current_user.is_admin?%>
+                  <a class="navbar-link user-thumb"><%= gravatar_image_tag(current_user.email.gsub('spam', 'mdeering'), alt: current_user.name, gravatar: { size: 30 }); %>
+                    <%= current_user.name %> (Admin)
+                  </a>
+                <% else %>
+                <a class="navbar-link user-thumb"><%= gravatar_image_tag(current_user.email.gsub('spam', 'mdeering'), alt: current_user.name, gravatar: { size: 30 }); %>
+                  <%= current_user.name %>
                 </a>
-
-
+                <% end %>
                 <div class="navbar-dropdown">
                 <% if !current_user.is_admin?%>
-                  <%= link_to "New Category","#",  class:"navbar-item" %>
+                  <%= link_to "New Category",new_category_path,  class:"navbar-item" %>
                 <% end %>
                 <% if current_user%>
                   <%= link_to "Edit my account",edit_user_registration_path, class:"navbar-item" %>
