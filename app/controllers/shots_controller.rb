@@ -4,6 +4,7 @@ class ShotsController < ApplicationController
   before_action :find_categories, only: [:index, :show]
   impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
 
+
   # GET /shots
   # GET /shots.json
   def index
@@ -67,18 +68,12 @@ class ShotsController < ApplicationController
 
   def like
     @shot.liked_by current_user
-    respond_to do |format|
-      format.html { redirect_back fallback_location: root_path }
-      format.json { render layout:false }
-    end
+    redirect_to @shot
   end
 
   def unlike
     @shot.unliked_by current_user
-    respond_to do |format|
-      format.html { redirect_back fallback_location: root_path }
-      format.json { render layout:false }
-    end
+    redirect_to @shot
   end
 
   private
@@ -94,5 +89,5 @@ class ShotsController < ApplicationController
 
     def find_categories
       @categories = Category.all.order('created_at desc')
-end
+    end
 end
